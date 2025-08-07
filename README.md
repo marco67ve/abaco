@@ -46,7 +46,7 @@ L'interfaccia mostra una rappresentazione grafica e animata delle barre con le "
 - `ResettaAbaco`: resetta tutte le barre a zero  
 
 ---
-
+```
 ## Esempio di schermata
 
 +------------------------------------------------------------------------------+
@@ -74,7 +74,7 @@ L'interfaccia mostra una rappresentazione grafica e animata delle barre con le "
 |                                                                              |
 |                                                                              |
 +------------------------------------------------------------------------------+
-
+```
 
 ---
 
