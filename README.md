@@ -93,5 +93,3 @@ GitHub: [https://github.com/marco67ve/abaco](https://github.com/marco67ve/abaco)
 
 ---
 
-*By Marco da Venezia con la collaborazione di Bishop (ChatGPT)*
-
