@@ -41,9 +41,9 @@ CALL DisegnaAbaco
 ' Ciclo principale del programma.
 DO
     ' Posiziona il cursore e chiede l'input all'utente.
-    LOCATE 22, 17: PRINT "Inserisci un numero (0 per uscire): ";
+    LOCATE 22, 16: PRINT "Inserisci un numero (0 per uscire): ";
     ' Pulisce l'area di input, sostituendo i caratteri precedenti con punti.
-    CALL clsrow(53, 64, ".")
+    CALL clsrow(52, 63, ".")
     ' Chiama la subroutine personalizzata per l'input da tastiera.
     CALL editLine(edit$)
     ' Converte la stringa di input in un valore numerico.
@@ -161,7 +161,7 @@ SUB DisegnaAbaco
 
     DIM i AS INTEGER, r AS INTEGER, margin AS INTEGER
     ' Calcola il margine per centrare l'abaco.
-    margin = (80 - 52) \ 2
+    margin = (80 - 54) \ 2
 
     ' Cicla dalle barre più significative (miliardi) a quelle meno significative (unita').
     FOR r = 9 TO 0 STEP -1
