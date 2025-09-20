@@ -18,7 +18,7 @@ L'interfaccia mostra una rappresentazione grafica e animata delle barre con le "
 - Addizione e sottrazione con gestione di riporto e prestito su 10 barre  
 - Visualizzazione animata delle perle sulle barre, con feedback sonoro  
 - Editor interno per input numerico con controllo di validità e lunghezza  
-- Salvataggio dello stato attuale dell'abaco in un file di testo `screen.txt`  
+- Salvataggio dello stato attuale dell'abaco in un file di testo `abaco.scr`  
 - Interfaccia testuale con cornice, titoli e valori numerici separati da spazi  
 - Limiti di input gestiti per evitare overflow (massimo ±1.000.000.000)  
 
