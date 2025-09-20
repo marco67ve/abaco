@@ -125,8 +125,8 @@ END SUB
 
 ' Subroutine per salvare lo stato dello schermo in un file di testo
 SUB creafiletxt
-    ' Apre il file "screen.txt" per la scrittura.
-    OPEN "screen.txt" FOR OUTPUT AS #1
+    ' Apre il file "abaco.scr" per la scrittura.
+    OPEN "abaco.scr" FOR OUTPUT AS #1
     ' Cicla su tutte le 25 righe dello schermo.
     FOR riga = 1 TO 25
         ' Cicla su tutte le 80 colonne dello schermo.
@@ -342,4 +342,3 @@ SUB Sottrazione (valoreTogliere)
         END IF
     LOOP
 END SUB
-
