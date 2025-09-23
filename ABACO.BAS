@@ -1,5 +1,5 @@
 ' ABACO.BAS - Gioco didattico sull'abaco
-' PD (Public Domain) 1986-2025 by Marco da Venezia
+' PD (Public Domain) 1986 by Marco da Venezia
 '
 ' Questo programma simula un abaco orizzontale a 10 barre, utile per
 ' comprendere il concetto di addizione e sottrazione con riporto.
@@ -15,7 +15,7 @@ DEFDBL A-Z
 ' per riconoscere le chiamate alle procedure.
 DECLARE SUB Addizione (valoreAggiungere)
 DECLARE SUB clsrow (c1%, c2%, c$)
-DECLARE SUB creafiletxt ()
+DECLARE SUB CreaFileTxt ()
 DECLARE SUB DisegnaAbaco ()
 DECLARE SUB DisegnaCornice ()
 DECLARE SUB editLine (edit$)
@@ -64,10 +64,10 @@ DO
     CALL DisegnaAbaco
 LOOP
 
-' Messaggio finale di ringraziamento.
+' Messaggio finale.
 LOCATE 4, 23, 1: PRINT "Grazie per aver giocato con l'abaco";
 ' Salva lo stato finale dello schermo in un file di testo.
-CALL creafiletxt
+CALL CreaFileTxt
 ' Attende la pressione di un tasto prima di terminare.
 k$ = INPUT$(1)
 ' Pulisce lo schermo prima della chiusura.
@@ -124,9 +124,9 @@ SUB clsrow (c1%, c2%, c$)
 END SUB
 
 ' Subroutine per salvare lo stato dello schermo in un file di testo
-SUB creafiletxt
+SUB CreaFileTxt
     ' Apre il file "abaco.scr" per la scrittura.
-    OPEN "abaco.scr" FOR OUTPUT AS #1
+    OPEN "abaco.scr" FOR APPEND AS #1
     ' Cicla su tutte le 25 righe dello schermo.
     FOR riga = 1 TO 25
         ' Cicla su tutte le 80 colonne dello schermo.
@@ -139,6 +139,8 @@ SUB creafiletxt
         ' Aggiunge un ritorno a capo dopo ogni riga completa.
         PRINT #1,
     NEXT riga
+    ' Aggiunge un ritorno a capo dopo il ciclo.
+    PRINT #1,
     ' Chiude il file.
     CLOSE #1
 END SUB
@@ -178,7 +180,7 @@ SUB DisegnaAbaco
                 LOCATE row, margin: PRINT STRING$(i, "o"); STRING$(10 - i, "-");
                 PRINT STRING$(i, "-"); STRING$(10 - i, "o");
                 PRINT "  <- "; unitName(r); " ("; i; ")"
-                SOUND 0, 3 ' Breve pausa per l'animazione.
+                PLAY "o1l10a" ' Breve pausa sonora per l'animazione.
             NEXT i
         ELSEIF curr < prev THEN
             ' Anima lo spostamento delle perle verso destra.
@@ -186,7 +188,7 @@ SUB DisegnaAbaco
                 LOCATE row, margin: PRINT STRING$(i, "o"); STRING$(10 - i, "-");
                 PRINT STRING$(i, "-"); STRING$(10 - i, "o");
                 PRINT "  <- "; unitName(r); " ("; i; ")"
-                SOUND 0, 3 ' Breve pausa per l'animazione.
+                PLAY "o2l10a" ' Breve pausa sonora per l'animazione.
             NEXT i
         ELSE
             ' Se non ci sono cambiamenti, disegna la barra senza animazione.
@@ -199,7 +201,7 @@ SUB DisegnaAbaco
     ' Ripristina il colore del testo.
     COLOR 7
     ' Stampa le righe di separazione.
-    LOCATE 18, margin: PRINT "-----------------------------------------------------"
+    LOCATE 18, margin: PRINT STRING$(53, "-")
 
     ' Calcola il valore numerico totale sull'abaco.
     currentNum = 0
@@ -216,7 +218,7 @@ SUB DisegnaAbaco
     FOR i = 9 TO 0 STEP -1
         PRINT STR$(Barra(i));
     NEXT
-    LOCATE 20, margin: PRINT "-----------------------------------------------------"
+    LOCATE 20, margin: PRINT STRING$(53, "-")
 
     ' Aggiorna lo stato precedente per la prossima animazione.
     FOR i = 0 TO 9
@@ -342,3 +344,4 @@ SUB Sottrazione (valoreTogliere)
         END IF
     LOOP
 END SUB
+
