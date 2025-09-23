@@ -18,7 +18,7 @@ L'interfaccia mostra una rappresentazione grafica e animata delle barre con le "
 - Addizione e sottrazione con gestione di riporto e prestito su 10 barre  
 - Visualizzazione animata delle perle sulle barre, con feedback sonoro  
 - Editor interno per input numerico con controllo di validità e lunghezza  
-- Salvataggio dello stato attuale dell'abaco in un file di testo `abaco.scr`  
+- Salvataggio dello stato attuale dell'abaco in un file di testo `screen.txt`  
 - Interfaccia testuale con cornice, titoli e valori numerici separati da spazi  
 - Limiti di input gestiti per evitare overflow (massimo ±1.000.000.000)  
 
@@ -26,7 +26,7 @@ L'interfaccia mostra una rappresentazione grafica e animata delle barre con le "
 
 ## Istruzioni per l'uso
 
-1. Avviare il programma in ambiente compatibile QuickBASIC o DOSBox.  
+1. Avviare il programma in ambiente compatibile DOS o DOSBox.
 2. Inserire un numero intero (positivo o negativo) entro i limiti specificati.  
 3. Visualizzare l'aggiornamento animato dell'abaco con le perle.  
 4. Per uscire, inserire `0`.  
@@ -77,10 +77,66 @@ L'interfaccia mostra una rappresentazione grafica e animata delle barre con le "
 ```
 
 ---
+```
+## Esempio di addizione
+
+Esempio di addizione: 7+5=12
+
+comporre 7 sulla prima fila
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+---ooooooo-------ooo 7 perle delle 10 unità slittano da destra a sinistra mentre 3 restano a destra
+
+aggiungere + 5
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+oooooooooo---------- le 3 perle restate a destra slittano a sinistra dove diventano 10, ma 10 è overflow per cui...
+
+
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+o----------ooooooooo 1 si slitta a sinistra 1 perla delle decine
+----------oooooooooo 0 si slitta a destra tutte e 10 le perle delle unità e...
+
+
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+----------oooooooooo
+o----------ooooooooo 1
+oo----------oooooooo 2 si prosegue il conteggio nelle unità slittandone 2 a sinistra.
+
+```
+
+---
 
 ## Note
 
-- Il codice è scritto per QuickBASIC ma può essere eseguito anche su emulatori DOS come DOSBox.  
+- Il codice è scritto per QuickBASIC, ma può essere eseguito anche su emulatori DOS come DOSBox.  
 - Il limite massimo di valore inseribile è ±1.000.000.000 per garantire che il valore sia rappresentabile sull'abaco.  
 - Il progetto è rilasciato in pubblico dominio e può essere usato e modificato liberamente.  
 
