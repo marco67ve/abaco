@@ -161,6 +161,19 @@ SUB DisegnaAbaco
     unitName(8) = "Centinaia di milioni"
     unitName(9) = "Miliardi"
 
+    ' Dichiarazione delle note musicali
+    DIM note$(9)
+    note$(0) = "C" ' Unita' (DO)
+    note$(1) = "C#"
+    note$(2) = "D"
+    note$(3) = "D#"
+    note$(4) = "E"
+    note$(5) = "F"
+    note$(6) = "F#"
+    note$(7) = "G"
+    note$(8) = "G#"
+    note$(9) = "A"
+
     DIM i AS INTEGER, r AS INTEGER, margin AS INTEGER
     ' Calcola il margine per centrare l'abaco.
     margin = (80 - 54) \ 2
@@ -177,18 +190,18 @@ SUB DisegnaAbaco
         IF curr > prev THEN
             ' Anima lo spostamento delle perle verso sinistra.
             FOR i = prev + 1 TO curr
+                PLAY "o1l10b" + note$(r) ' Breve pausa sonora per l'animazione.
                 LOCATE row, margin: PRINT STRING$(i, "o"); STRING$(10 - i, "-");
                 PRINT STRING$(i, "-"); STRING$(10 - i, "o");
                 PRINT "  <- "; unitName(r); " ("; i; ")"
-                PLAY "o1l10a" ' Breve pausa sonora per l'animazione.
             NEXT i
         ELSEIF curr < prev THEN
             ' Anima lo spostamento delle perle verso destra.
             FOR i = prev - 1 TO curr STEP -1
+                PLAY "o2l10b" + note$(r) ' Breve pausa sonora per l'animazione.
                 LOCATE row, margin: PRINT STRING$(i, "o"); STRING$(10 - i, "-");
                 PRINT STRING$(i, "-"); STRING$(10 - i, "o");
                 PRINT "  <- "; unitName(r); " ("; i; ")"
-                PLAY "o2l10a" ' Breve pausa sonora per l'animazione.
             NEXT i
         ELSE
             ' Se non ci sono cambiamenti, disegna la barra senza animazione.
