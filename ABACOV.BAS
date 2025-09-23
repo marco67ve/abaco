@@ -151,6 +151,18 @@ SUB DisegnaAbacoVerticale
     CONST altezzaMax = 10
     DIM margin AS INTEGER
 
+    DIM note$(9)
+    note$(0) = "C" ' Unita' (DO)
+    note$(1) = "C#"
+    note$(2) = "D"
+    note$(3) = "D#"
+    note$(4) = "E"
+    note$(5) = "F"
+    note$(6) = "F#"
+    note$(7) = "G"
+    note$(8) = "G#"
+    note$(9) = "A"
+   
     margin = (80 - (10 * 2 + 9)) \ 2  ' Calcolo margine orizzontale
 
     FOR r = 0 TO 9
@@ -161,13 +173,13 @@ SUB DisegnaAbacoVerticale
 
         IF curr > prev THEN
             FOR i = prev + 1 TO curr
+                PLAY "o1l10b" + note$(r)
                 LOCATE altezzaMax - i + 6, col: PRINT "o";
-                PLAY "o1l10a"
             NEXT i
         ELSEIF curr < prev THEN
             FOR i = curr + 1 TO prev
+                PLAY "o2l10b" + note$(r)
                 LOCATE altezzaMax - i + 6, col: PRINT "^";
-                PLAY "o2l10a"
             NEXT i
         END IF
         COLOR 7: LOCATE 16, margin + 1: PRINT STRING$(30, "=")
