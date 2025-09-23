@@ -1,5 +1,5 @@
 ' ABACOV.BAS - Gioco didattico sull'abaco
-' PD (Public Domain) 1986-2025 by Marco da Venezia
+' PD (Public Domain) 1986 by Marco da Venezia
 '
 ' Questo programma simula un abaco verticale a 10 barre.
 
@@ -62,7 +62,7 @@ DO
     CALL DisegnaAbacoVerticale
 LOOP
 
-' Messaggio finale di ringraziamento.
+' Messaggio finale.
 LOCATE 4, 23, 1: PRINT "Grazie per aver giocato con l'abaco";
 ' Salva lo stato finale dello schermo in un file di testo.
 CALL creafiletxt
@@ -124,7 +124,7 @@ END SUB
 ' Subroutine per salvare lo stato dello schermo in un file di testo
 SUB creafiletxt
     ' Apre il file "abacov.scr" per la scrittura.
-    OPEN "abacov.scr" FOR OUTPUT AS #1
+    OPEN "abacov.scr" FOR APPEND AS #1
     ' Cicla su tutte le 25 righe dello schermo.
     FOR riga = 1 TO 25
         ' Cicla su tutte le 80 colonne dello schermo.
@@ -137,6 +137,8 @@ SUB creafiletxt
         ' Aggiunge un ritorno a capo dopo ogni riga completa.
         PRINT #1,
     NEXT riga
+    ' Aggiunge un ritorno a capo dopo il ciclo.
+    PRINT #1,
     ' Chiude il file.
     CLOSE #1
 END SUB
@@ -160,21 +162,17 @@ SUB DisegnaAbacoVerticale
         IF curr > prev THEN
             FOR i = prev + 1 TO curr
                 LOCATE altezzaMax - i + 6, col: PRINT "o";
-                SOUND 0, 3
+                PLAY "o1l10a"
             NEXT i
         ELSEIF curr < prev THEN
             FOR i = curr + 1 TO prev
                 LOCATE altezzaMax - i + 6, col: PRINT "^";
-                SOUND 0, 3
+                PLAY "o2l10a"
             NEXT i
         END IF
         COLOR 7: LOCATE 16, margin + 1: PRINT STRING$(30, "=")
 
         ' Disegno finale della colonna (perle attive)
-        'FOR i = 1 TO curr
-        '    LOCATE altezzaMax - i + 6, col: PRINT "o";
-        'NEXT i
-        ' Pulisce il resto della colonna
         FOR i = curr + 1 TO altezzaMax
             LOCATE altezzaMax - i + 6, col: PRINT "|";
         NEXT i
